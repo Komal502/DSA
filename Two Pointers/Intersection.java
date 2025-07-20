@@ -21,11 +21,32 @@ class Intersection{
 		}
 		return Arrays.copyOfRange(ans,0,idx+1);
 	}
+	public static int[] intersection2(int[] arr1,int[] arr2)
+	{
+		int i=0;
+		int j=0,idx=-1;
+		int ans[]=new int[Math.max(arr1.length,arr2.length)];
+		while(i<arr1.length && j<arr2.length)
+		{
+			if(arr1[i]==arr2[j])
+			{
+				ans[++idx]=arr1[i];
+				i++;
+				j++;
+			}else if(arr1[i]<arr2[j])
+			{
+				i++;
+			}else{
+				j++;
+			}
+		}
+		return Arrays.copyOfRange(ans,0,idx+1);
+	}
 	public static void main(String args[])
 	{
 		int arr1[]={1,2,2,3,3,4,5,6};
 		int arr2[]={2,3,3,5,6,6,7};
-		int ans[]=intersection(arr1,arr2);
+		int ans[]=intersection2(arr1,arr2);
 		for(int i=0;i<ans.length;i++)
 		{
 			System.out.println(ans[i]);
